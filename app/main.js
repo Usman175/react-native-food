@@ -1,7 +1,6 @@
 import React from 'react';
 import {
     View,
-    Text,
     StyleSheet
 } from 'react-native';
 import Routes from './routes';
@@ -10,12 +9,11 @@ import store from './store';
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#ccc',
+        marginTop: 20,
         flex: 1,
         flexDirection: 'row'
     }
 });
-
 
 const Element = () =>
     <Provider store={store}>
