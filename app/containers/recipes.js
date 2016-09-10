@@ -8,6 +8,7 @@ import {
     Image
 } from 'react-native';
 import HeroGallery from '../components/recipes/heroGallery';
+import ScrollableRecipes from '../components/recipes/scrollableRecipes';
 
 // Assets
 import hero1PNG from '../assets/recipes/hero1.png';
@@ -48,7 +49,6 @@ export default class Recipes extends Component {
     }
 
     render() {
-        console.log(this.heroRecipes);
         return (
             <View style={{flex: 1}} onLayout={this.onLayoutDidChange.bind(this)}>
                 <Carousel autoplay={false} style={this.state.size}>
@@ -62,6 +62,12 @@ export default class Recipes extends Component {
                         );
                     })}
                 </Carousel>
+
+                <ScrollableRecipes title="Recipe you followed" />
+
+                <ScrollableRecipes title="You may love these" />
+
+                <ScrollableRecipes title="New recipes" />
             </View>
         );
     }
