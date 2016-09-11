@@ -8,7 +8,9 @@ import {
     TouchableHighlight
 } from 'react-native';
 import color from '../../styles/colors';
-import thumbPNG from '../../assets/recipes/thumb1.png';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { viewRecipeDetailAction } from '../../actions/recipesAction';
 
 const styles = StyleSheet.create({
     container: {
@@ -19,6 +21,7 @@ const styles = StyleSheet.create({
         height: 115
     },
     textContainer: {
+        width: 125,
         padding: 7
     },
     text: {
@@ -34,24 +37,22 @@ const styles = StyleSheet.create({
     }
 });
 
-export default class RecipeThumb extends Component {
+class RecipeThumb extends Component {
     shouldComponentUpdate(nextProps, nextState) {
         return false;
     }
 
-    onPressButton() {
-        console.log('hit');
-    }
-
     render() {
+        const { viewRecipeDetailAction, uri, publisher, title } = this.props;
+
         return (
             <View style={styles.container}>
-                <TouchableHighlight onPress={this.onPressButton} underlayColor="#FFF">
+                <TouchableHighlight onPress={viewRecipeDetailAction} underlayColor="#FFF">
                     <View>
-                        <Image style={styles.img} source={thumbPNG} />
+                        <Image style={styles.img} source={uri} />
                         <View style={styles.textContainer}>
-                            <Text style={[styles.text, styles.heading]}>Recipe Name</Text>
-                            <Text style={[styles.text, styles.subHeading]}>Recipe Description</Text>
+                            <Text style={[styles.text, styles.heading]} numberOfLines={2} ellipsizeMode="tail">{title}</Text>
+                            <Text style={[styles.text, styles.subHeading]} numberOfLines={2} ellipsizeMode="tail">{publisher}</Text>
                         </View>
                     </View>
                 </TouchableHighlight>
@@ -59,3 +60,11 @@ export default class RecipeThumb extends Component {
         );
     }
 }
+
+function mapDispatchToProps(dispatch) {
+    return {
+        viewRecipeDetailAction: bindActionCreators(viewRecipeDetailAction, dispatch)
+    };
+}
+
+export default connect(null, mapDispatchToProps)(RecipeThumb);

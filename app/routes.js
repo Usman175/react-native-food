@@ -8,7 +8,7 @@ import {
 import colors  from './styles/colors';
 
 // Containers
-import Recipes from './containers/recipes';
+import Recipes from './containers/recipesNavigator';
 
 // Assets
 import recipePNG from './assets/routes/recipes.png';
@@ -63,7 +63,7 @@ export default class Routes extends Component {
                 icon: searchPNG
             },
             {
-                name: 'More...',
+                name: 'More',
                 bgColor: '#kkk',
                 icon: morePNG
             }
