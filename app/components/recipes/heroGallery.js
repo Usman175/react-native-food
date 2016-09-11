@@ -39,4 +39,6 @@ HeroGallery.propTypes = {
     description: PropTypes.string
 };
 
+HeroGallery.displayName = 'HeroGallery';
+
 export default HeroGallery;

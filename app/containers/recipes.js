@@ -5,7 +5,8 @@ import {
     StyleSheet,
     Text,
     View,
-    Image
+    Image,
+    ScrollView
 } from 'react-native';
 import HeroGallery from '../components/recipes/heroGallery';
 import ScrollableRecipes from '../components/recipes/scrollableRecipes';
@@ -50,25 +51,27 @@ export default class Recipes extends Component {
 
     render() {
         return (
-            <View style={{flex: 1}} onLayout={this.onLayoutDidChange.bind(this)}>
-                <Carousel autoplay={false} style={this.state.size}>
-                    {this.heroRecipes.map((item, i) => {
-                        return (
-                            <HeroGallery
-                                key={i}
-                                img={item.img}
-                                description={item.description}
-                                />
-                        );
-                    })}
-                </Carousel>
+            <ScrollView>
+                <View style={{flex: 1}} onLayout={this.onLayoutDidChange.bind(this)}>
+                    <Carousel autoplay={false} style={this.state.size}>
+                        {this.heroRecipes.map((item, i) => {
+                            return (
+                                <HeroGallery
+                                    key={i}
+                                    img={item.img}
+                                    description={item.description}
+                                    />
+                            );
+                        })}
+                    </Carousel>
 
-                <ScrollableRecipes title="Recipe you followed" />
+                    <ScrollableRecipes title="Recipe you followed" />
 
-                <ScrollableRecipes title="You may love these" />
+                    <ScrollableRecipes title="You may love these" />
 
-                <ScrollableRecipes title="New recipes" />
-            </View>
+                    <ScrollableRecipes title="New recipes" />
+                </View>
+            </ScrollView>
         );
     }
 }

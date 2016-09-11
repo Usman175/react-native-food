@@ -4,7 +4,8 @@ import {
     Text,
     View,
     Image,
-    ScrollView
+    ScrollView,
+    TouchableHighlight
 } from 'react-native';
 import color from '../../styles/colors';
 import thumbPNG from '../../assets/recipes/thumb1.png';
@@ -38,14 +39,22 @@ export default class RecipeThumb extends Component {
         return false;
     }
 
+    onPressButton() {
+        console.log('hit');
+    }
+
     render() {
         return (
             <View style={styles.container}>
-                <Image style={styles.img} source={thumbPNG} />
-                <View style={styles.textContainer}>
-                    <Text style={[styles.text, styles.heading]}>Recipe Name</Text>
-                    <Text style={[styles.text, styles.subHeading]}>Recipe Description</Text>
-                </View>
+                <TouchableHighlight onPress={this.onPressButton} underlayColor="#FFF">
+                    <View>
+                        <Image style={styles.img} source={thumbPNG} />
+                        <View style={styles.textContainer}>
+                            <Text style={[styles.text, styles.heading]}>Recipe Name</Text>
+                            <Text style={[styles.text, styles.subHeading]}>Recipe Description</Text>
+                        </View>
+                    </View>
+                </TouchableHighlight>
             </View>
         );
     }
