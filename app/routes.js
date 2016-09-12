@@ -9,6 +9,7 @@ import colors  from './styles/colors';
 
 // Containers
 import Recipes from './containers/recipesNavigator';
+import Search from './containers/search';
 
 // Assets
 import recipePNG from './assets/routes/recipes.png';
@@ -25,7 +26,7 @@ export default class Routes extends Component {
         super(props);
 
         this.state = {
-            selectedTab: 'Recipes'
+            selectedTab: 'Search'
         };
         this.styles = StyleSheet.create({
             tabContent: {
@@ -60,7 +61,8 @@ export default class Routes extends Component {
             {
                 name: 'Search',
                 bgColor: '#ddd',
-                icon: searchPNG
+                icon: searchPNG,
+                container: <Search />
             },
             {
                 name: 'More',

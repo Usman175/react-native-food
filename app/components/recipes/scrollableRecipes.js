@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
         height: 300
     },
     horizontalScrollView: {
-        height: 182
-    },
+        height: 188
+     },
     container: {
         padding: 10,
         paddingRight: 0,
