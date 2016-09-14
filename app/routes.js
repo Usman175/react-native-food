@@ -9,7 +9,7 @@ import colors  from './styles/colors';
 
 // Containers
 import Recipes from './containers/recipesNavigator';
-import Search from './containers/search';
+import Search from './containers/searchNavigator';
 
 // Assets
 import recipePNG from './assets/routes/recipes.png';
@@ -34,7 +34,7 @@ export default class Routes extends Component {
                 alignItems: 'center'
             },
             tabBar: {
-                opacity: .8
+                opacity: 1
             },
             tabText: {
                 color: 'black',
@@ -85,7 +85,6 @@ export default class Routes extends Component {
         return (
             <TabBarIOS
                 translucent={true}
-                barTintColor="#FFF"
                 tintColor={colors.red}
                 style={this.styles.tabBar}>
 

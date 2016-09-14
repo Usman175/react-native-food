@@ -6,16 +6,16 @@ import {
     Text,
     Navigator
 } from 'react-native';
-import Recipes from './recipes';
-import { viewRecipeDetailAction } from '../actions/recipesAction';
-import RecipeDetail from './recipeDetail';
+import Search from './search';
+import RecipeDetail from'./recipeDetail'
+import { viewRecipeDetailAction } from '../actions/searchAction';
 
-class RecipesNavigator extends Component {
+class SearchNavigator extends Component {
     constructor(props) {
         super(props);
         this.navigator = null;
         this.routes = [
-            {title: 'Home', index: 0},
+            {title: 'Search', index: 0},
             {title: 'Recipe Detail', index: 1}
         ];
         this.index = 1;
@@ -34,7 +34,7 @@ class RecipesNavigator extends Component {
         this.route = route;
 
         if (route.index === 0) {
-            return <Recipes showRecommended={this.props.showRecommended} />;
+            return <Search />;
         } else {
             return <RecipeDetail />;
         }
@@ -54,8 +54,7 @@ class RecipesNavigator extends Component {
 
 function mapStateToProps(state) {
     return {
-        showRecipeDetailView: state.recipesState.showRecipeDetailView,
-        showRecommended: state.recipesState.showRecommended
+        showRecipeDetailView: state.searchRecipesState.showRecipeDetailView
     }
 }
 
@@ -65,4 +64,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RecipesNavigator);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchNavigator);

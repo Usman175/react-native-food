@@ -5,3 +5,9 @@ export function viewRecipeDetailAction() {
         type: ActionTypes.RECIPES_VIEW_ITEM_DETAIL
     }
 }
+
+export function showRecommended() {
+    return {
+        type: ActionTypes.RECIPES_SHOW_RECOMMENDED
+    }
+}

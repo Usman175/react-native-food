@@ -7,25 +7,27 @@ import {
     Text
 } from 'react-native';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import GridView from 'react-native-grid-view';
 import SearchBar from 'react-native-search-bar';
 import Modal from '../components/search/modal';
 import RecipeThumbPlus from '../components/common/recipeThumbPlus';
+import { showRecommended } from '../actions/recipesAction';
 
-export default class Search extends Component {
+class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
             dataSource: null,
             modalVisible: false,
-            modalVisible: false
+            showResult: true
         };
         this.styles = {
             container: {
                 flex: 1
             },
             gridContainer: {
-                //opacity: .8
+                flex: 1
             }
         }
     }
@@ -60,15 +62,19 @@ export default class Search extends Component {
                     onSearchButtonPress={() => {
                         this.toggleModalVisible(false);
                         this.refs.searchBar.unFocus();
+                        this.setState({
+                            showResult: true
+                        });
+                        this.props.showRecommended();
                     }}
                     ref='searchBar' />
 
-                <GridView
+                { this.state.showResult ? <GridView
                     style={this.styles.gridContainer}
-                    items={[1,2,3,4,5,6]}
+                    items={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]}
                     itemsPerRow={2}
                     renderItem={this.renderItem.bind(this)}
-                />
+                /> : null }
 
                 { this.state.modalVisible ? <Modal visible={this.state.modalVisible} searchBar={this.refs.searchBar} /> : null }
             </View>
@@ -76,4 +82,10 @@ export default class Search extends Component {
     }
 }
 
-//export default connect()(Search);
+function mapDispatchToProps(dispatch) {
+    return {
+        showRecommended: bindActionCreators(showRecommended, dispatch)
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Search);

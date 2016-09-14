@@ -7,24 +7,10 @@ import {
     ScrollView
 } from 'react-native';
 import RecipeThumb from './recipeThumb';
-import thumbPNG1 from '../../assets/recipes/thumb1.png';
-import thumbPNG2 from '../../assets/recipes/thumb2.jpg';
-import thumbPNG3 from '../../assets/recipes/thumb3.jpg';
-import thumbPNG4 from '../../assets/recipes/thumb4.jpg';
-import thumbPNG5 from '../../assets/recipes/thumb5.jpg';
-import thumbPNG6 from '../../assets/recipes/thumb6.jpg';
-import thumbPNG7 from '../../assets/recipes/thumb7.jpg';
-import thumbPNG8 from '../../assets/recipes/thumb8.jpg';
-import thumbPNG9 from '../../assets/recipes/thumb9.jpg';
-import thumbPNG10 from '../../assets/recipes/thumb10.jpg';
-import thumbPNG11 from '../../assets/recipes/thumb11.jpg';
-import thumbPNG12 from '../../assets/recipes/thumb12.jpg';
-import thumbPNG13 from '../../assets/recipes/thumb13.jpg';
-import thumbPNG14 from '../../assets/recipes/thumb14.jpg';
-import thumbPNG15 from '../../assets/recipes/thumb15.jpg';
-import thumbPNG16 from '../../assets/recipes/thumb16.jpg';
+import images from '../../constants/images';
+import getRandomArbitrary from '../../utils/getRandomArbitary';
 
-var THUMBS = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+const THUMBS = [1, 2, 3, 4, 5, 6];
 
 const styles = StyleSheet.create({
     scrollView: {
@@ -81,33 +67,10 @@ const titles = [
     '​Chicken curry and naan​'
 ];
 
-const images = [
-    thumbPNG1,
-    thumbPNG2,
-    thumbPNG3,
-    thumbPNG4,
-    thumbPNG5,
-    thumbPNG6,
-    thumbPNG7,
-    thumbPNG8,
-    thumbPNG9,
-    thumbPNG10,
-    thumbPNG11,
-    thumbPNG12,
-    thumbPNG13,
-    thumbPNG14,
-    thumbPNG15,
-    thumbPNG16
-];
-
 export default class ScrollableRecipes extends Component {
     static propTypes = {
         title: PropTypes.string.isRequired
     };
-
-    getRandomArbitrary(min, max) {
-        return Math.round(Math.random() * (max - min) + min);
-    }
 
     render() {
         return (
@@ -121,9 +84,9 @@ export default class ScrollableRecipes extends Component {
                     {THUMBS.map((uri, i) =>
                         <RecipeThumb
                             key={i}
-                            title={titles[this.getRandomArbitrary(0, titles.length - 1)]}
-                            uri={images[this.getRandomArbitrary(0, images.length - 1)]}
-                            publisher={publishers[this.getRandomArbitrary(0, publishers.length - 1)]} />)
+                            title={titles[getRandomArbitrary(0, titles.length - 1)]}
+                            uri={images[getRandomArbitrary(0, images.length - 1)]}
+                            publisher={publishers[getRandomArbitrary(0, publishers.length - 1)]} />)
                     }
                 </ScrollView>
             </View>

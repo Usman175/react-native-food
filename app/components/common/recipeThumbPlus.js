@@ -1,58 +1,51 @@
 import React, { Component } from 'react';
+import { connect } from'react-redux';
+import { bindActionCreators } from 'redux';
 import {
     View,
     Image,
-    Text
+    Text,
+    TouchableHighlight
 } from 'react-native';
+import { viewRecipeDetailAction } from '../../actions/searchAction';
 import colors from '../../styles/colors';
-import thumbPNG1 from '../../assets/recipes/thumb1.png';
-import thumbPNG2 from '../../assets/recipes/thumb2.jpg';
-import thumbPNG3 from '../../assets/recipes/thumb3.jpg';
-import thumbPNG4 from '../../assets/recipes/thumb4.jpg';
-import thumbPNG5 from '../../assets/recipes/thumb5.jpg';
-import thumbPNG6 from '../../assets/recipes/thumb6.jpg';
-import thumbPNG7 from '../../assets/recipes/thumb7.jpg';
-import thumbPNG8 from '../../assets/recipes/thumb8.jpg';
-import thumbPNG9 from '../../assets/recipes/thumb9.jpg';
-import thumbPNG10 from '../../assets/recipes/thumb10.jpg';
-import thumbPNG11 from '../../assets/recipes/thumb11.jpg';
-import thumbPNG12 from '../../assets/recipes/thumb12.jpg';
-import thumbPNG13 from '../../assets/recipes/thumb13.jpg';
-import thumbPNG14 from '../../assets/recipes/thumb14.jpg';
-import thumbPNG15 from '../../assets/recipes/thumb15.jpg';
-import thumbPNG16 from '../../assets/recipes/thumb16.jpg';
+import Stars from './starts';
+import images from '../../constants/images';
+import checklist from '../../assets/search/checklistRed.png';
+import getRandomArbitrary from '../../utils/getRandomArbitary';
 
-export default class RecipeThumbPlus extends Component {
+class RecipeThumbPlus extends Component {
     constructor(props) {
         super(props);
         this.styles = {
             recipeContainerLeft: {
-                flex: 1,
                 marginRight: 5,
-                marginLeft: 11,
+                marginLeft: 8,
                 marginBottom: 10,
                 alignItems: 'stretch',
                 height: 218
             },
             recipeContainerRight: {
-                flex: 1,
                 marginLeft: 5,
-                marginRight: 11,
+                marginRight: 8,
                 marginBottom: 10,
                 height: 218
             },
             container: {
-                shadowColor: "#000000",
-                shadowOpacity: 0.2,
-                shadowRadius: 1,
-                shadowOffset: {
-                    height: 1,
-                    width: 0
-                }
+                flex: 1,
+                //shadowColor: "#000000",
+                //shadowOpacity: 0.2,
+                //shadowRadius: 1,
+                //shadowOffset: {
+                //    height: 1,
+                //    width: 0
+                //},
+                borderWidth: 1,
+                borderColor: '#EAEAEA'
             },
             image: {
                 width: null,
-                height: 150
+                height: 160
             },
             title: {
                 marginTop: 5,
@@ -66,8 +59,17 @@ export default class RecipeThumbPlus extends Component {
                 marginRight: 8,
                 fontSize: 11,
                 color: colors.lightGrey
+            },
+            checklist: {
+                position: 'absolute',
+                left: -1,
+                top: -1
             }
         }
+    }
+
+    onPressButton() {
+        this.props.viewRecipeDetailAction();
     }
 
     render() {
@@ -79,12 +81,28 @@ export default class RecipeThumbPlus extends Component {
         }
 
         return (
-            <View style={[style, this.styles.container]}>
-                <Image source={thumbPNG1} style={this.styles.image} />
-                <Text style={this.styles.title}>Indian Beef Curry</Text>
-                <Text style={this.styles.subTitle}>15 mins prep • 20 mins cock</Text>
-                <View></View>
-            </View>
+            <TouchableHighlight style={{flex: 1}} onPress={this.onPressButton.bind(this)} underlayColor="#FFF">
+                <View style={[style, this.styles.container]}>
+                    <View>
+                        <Image source={images[getRandomArbitrary(0, 10)]} style={this.styles.image} />
+                        <Text style={this.styles.title}>Indian Beef Curry</Text>
+                        <Text style={this.styles.subTitle}>15 mins prep • 20 mins cock</Text>
+                    </View>
+
+                    <TouchableHighlight style={this.styles.checklist} onPress={this.onPressButton} underlayColor="#FFF">
+                        <Image source={checklist} />
+                    </TouchableHighlight>
+                    <Stars amount={5} />
+                </View>
+            </TouchableHighlight>
         );
     }
 }
+
+function mapDispatchToProps(dispatch) {
+    return {
+        viewRecipeDetailAction: bindActionCreators(viewRecipeDetailAction, dispatch)
+    };
+}
+
+export default connect(null, mapDispatchToProps)(RecipeThumbPlus);

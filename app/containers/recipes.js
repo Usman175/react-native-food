@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Carousel from 'react-native-looped-carousel';
 import Dimensions from 'Dimensions';
 import {
@@ -18,6 +18,10 @@ import hero3PNG from '../assets/recipes/hero3.png';
 import hero4PNG from '../assets/recipes/hero4.png';
 
 export default class Recipes extends Component {
+    static propTypes = {
+        showRecommended: PropTypes.bool
+    };
+
     constructor(props) {
         super(props);
         const { width } = Dimensions.get('window');
@@ -65,7 +69,9 @@ export default class Recipes extends Component {
                         })}
                     </Carousel>
 
-                    <ScrollableRecipes title="Recipe you followed" />
+                    { this.props.showRecommended ? <ScrollableRecipes title="&#9829; Recommended" /> : null }
+
+                    <ScrollableRecipes title="Recipes you followed" />
 
                     <ScrollableRecipes title="You may love these" />
 
