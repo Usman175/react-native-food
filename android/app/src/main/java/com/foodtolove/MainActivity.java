@@ -1,6 +1,7 @@
 package com.foodtolove;
 
 import com.facebook.react.ReactActivity;
+import com.cmcewen.blurview.BlurViewPackage;
 
 public class MainActivity extends ReactActivity {
 
