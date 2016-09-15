@@ -47,7 +47,7 @@ class RecipeThumb extends Component {
 
         return (
             <View style={styles.container}>
-                <TouchableHighlight onPress={viewRecipeDetailAction} underlayColor="#FFF">
+                <TouchableHighlight onPress={() => viewRecipeDetailAction(true)} underlayColor="#FFF">
                     <View>
                         <Image style={styles.img} source={uri} />
                         <View style={styles.textContainer}>

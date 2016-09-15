@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import Fav from '../../assets/recipeDetail/fav.png';
 import Stars from '../common/starts';
-const { BlurView, VibrancyView } = require('react-native-blur');
+const { BlurView } = require('react-native-blur');
 
 const styles = StyleSheet.create({
     fav: {

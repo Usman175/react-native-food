@@ -22,7 +22,7 @@ class RecipesNavigator extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.showRecipeDetailView || this.route.index === 0) {
+        if (nextProps.showRecipeDetailView) {
             this.navigator.push(this.routes[1]);
         } else {
             this.navigator.pop();
@@ -36,7 +36,7 @@ class RecipesNavigator extends Component {
         if (route.index === 0) {
             return <Recipes showRecommended={this.props.showRecommended} />;
         } else {
-            return <RecipeDetail />;
+            return <RecipeDetail source="recipes" />;
         }
     }
 
@@ -55,7 +55,8 @@ class RecipesNavigator extends Component {
 function mapStateToProps(state) {
     return {
         showRecipeDetailView: state.recipesState.showRecipeDetailView,
-        showRecommended: state.recipesState.showRecommended
+        showRecommended: state.recipesState.showRecommended,
+        dateTime: state.recipesState.dateTime
     }
 }
 

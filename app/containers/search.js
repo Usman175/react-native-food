@@ -20,7 +20,7 @@ class Search extends Component {
         this.state = {
             dataSource: null,
             modalVisible: false,
-            showResult: true
+            showResult: false
         };
         this.styles = {
             container: {

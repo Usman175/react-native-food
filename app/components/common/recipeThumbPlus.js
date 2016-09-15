@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from'react-redux';
 import { bindActionCreators } from 'redux';
 import {
@@ -12,9 +12,18 @@ import colors from '../../styles/colors';
 import Stars from './starts';
 import images from '../../constants/images';
 import checklist from '../../assets/search/checklistRed.png';
+import mykitchen from '../../assets/search/addMyKitchen.png';
 import getRandomArbitrary from '../../utils/getRandomArbitary';
 
 class RecipeThumbPlus extends Component {
+    static propTypes = {
+        type: PropTypes.oneOf(['checklist', 'myKitchen'])
+    };
+
+    static defaultProps = {
+        type: 'myKitchen'
+    };
+
     constructor(props) {
         super(props);
         this.styles = {
@@ -69,11 +78,11 @@ class RecipeThumbPlus extends Component {
     }
 
     onPressButton() {
-        this.props.viewRecipeDetailAction();
+        this.props.viewRecipeDetailAction(true);
     }
 
     render() {
-        const { item, itemKey } = this.props;
+        const { item, itemKey, type } = this.props
 
         let style = (itemKey === 0) ? this.styles.recipeContainerLeft : this.styles.recipeContainerRight;
         if (item === 1 || item === 2) {
@@ -90,7 +99,7 @@ class RecipeThumbPlus extends Component {
                     </View>
 
                     <TouchableHighlight style={this.styles.checklist} onPress={this.onPressButton} underlayColor="#FFF">
-                        <Image source={checklist} />
+                        <Image source={(type === 'myKitchen') ? mykitchen : checklist } />
                     </TouchableHighlight>
                     <Stars amount={5} />
                 </View>

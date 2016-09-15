@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {
     Text,
     View,
@@ -9,6 +11,9 @@ import {
 import BackPNG from '../../assets/search/back.png';
 import SharePNG from '../../assets/search/share.png';
 import colors from '../../styles/colors';
+import { viewRecipeDetailAction as SearchViewRecipeDetailAction } from '../../actions/searchAction.js';
+import { viewRecipeDetailAction as RecipeViewRecipeDetailAction } from '../../actions/recipesAction.js';
+
 
 const styles = StyleSheet.create({
    container: {
@@ -40,25 +45,38 @@ const styles = StyleSheet.create({
     }
 });
 
-export default class NavBar extends Component {
+class NavBar extends Component {
     handlePress() {
-        console.log('hit');
+        if (this.props.source === 'search') {
+            this.props.SearchViewRecipeDetailAction(false);
+        } else {
+            this.props.RecipeViewRecipeDetailAction(false);
+        }
     }
 
     render() {
         return (
             <View style={styles.container}>
-                <TouchableHighlight onPress={this.handlePress}>
+                <TouchableHighlight underlayColor={null} onPress={this.handlePress.bind(this)}>
                     <View style={styles.backContainer}>
                         <Image source={BackPNG} />
                         <Text style={styles.backText}>Back</Text>
                     </View>
                 </TouchableHighlight>
                 <Text style={styles.title}>Recipe</Text>
-                <TouchableHighlight onPress={this.handlePress}>
+                <TouchableHighlight underlayColor={null} onPress={this.handlePress}>
                     <Image style={styles.shareIcon} source={SharePNG} />
                 </TouchableHighlight>
             </View>
         )
     }
 }
+
+function mapDispatchToProps(dispatch) {
+    return {
+        SearchViewRecipeDetailAction: bindActionCreators(SearchViewRecipeDetailAction, dispatch),
+        RecipeViewRecipeDetailAction: bindActionCreators(RecipeViewRecipeDetailAction, dispatch)
+    };
+}
+
+export default connect(null, mapDispatchToProps)(NavBar);

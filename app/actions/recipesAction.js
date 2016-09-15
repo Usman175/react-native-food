@@ -1,8 +1,12 @@
 import ActionTypes from '../constants/actionTypes';
 
-export function viewRecipeDetailAction() {
+export function viewRecipeDetailAction(toggleValue) {
     return {
-        type: ActionTypes.RECIPES_VIEW_ITEM_DETAIL
+        type: ActionTypes.RECIPES_VIEW_ITEM_DETAIL,
+        payload: {
+            toggleValue,
+            dateTime: new Date()
+        }
     }
 }
 

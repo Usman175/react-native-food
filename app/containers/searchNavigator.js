@@ -22,7 +22,7 @@ class SearchNavigator extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.showRecipeDetailView || this.route.index === 0) {
+        if (nextProps.showRecipeDetailView) {
             this.navigator.push(this.routes[1]);
         } else {
             this.navigator.pop();
@@ -36,7 +36,7 @@ class SearchNavigator extends Component {
         if (route.index === 0) {
             return <Search />;
         } else {
-            return <RecipeDetail />;
+            return <RecipeDetail source="search" />;
         }
     }
 
@@ -54,7 +54,8 @@ class SearchNavigator extends Component {
 
 function mapStateToProps(state) {
     return {
-        showRecipeDetailView: state.searchRecipesState.showRecipeDetailView
+        showRecipeDetailView: state.searchRecipesState.showRecipeDetailView,
+        dateTime: state.searchRecipesState.dateTime
     }
 }
 

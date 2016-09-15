@@ -26,7 +26,7 @@ export default class Routes extends Component {
         super(props);
 
         this.state = {
-            selectedTab: 'Search'
+            selectedTab: 'Recipes'
         };
         this.styles = StyleSheet.create({
             tabContent: {
