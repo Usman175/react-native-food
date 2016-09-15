@@ -13,6 +13,7 @@ import SearchBar from 'react-native-search-bar';
 import Modal from '../components/search/modal';
 import RecipeThumbPlus from '../components/common/recipeThumbPlus';
 import { showRecommended } from '../actions/recipesAction';
+import PopularSearchTerms from '../components/search/popularSearchTerms';
 
 class Search extends Component {
     constructor(props) {
@@ -45,6 +46,7 @@ class Search extends Component {
     }
 
     render() {
+        const { showResult } = this.state;
         return (
             <View style={this.styles.container}>
                 <SearchBar
@@ -69,7 +71,9 @@ class Search extends Component {
                     }}
                     ref='searchBar' />
 
-                { this.state.showResult ? <GridView
+                { !showResult ? <PopularSearchTerms /> : null }
+
+                { showResult ? <GridView
                     style={this.styles.gridContainer}
                     items={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]}
                     itemsPerRow={2}
