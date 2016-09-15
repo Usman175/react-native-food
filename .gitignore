@@ -1,0 +1,4 @@
+.idea
+ios/build
+android/build
+node_modules
