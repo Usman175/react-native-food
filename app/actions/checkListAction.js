@@ -8,3 +8,12 @@ export function toggleIngredientAction(index) {
         }
     }
 }
+
+export function addIngredientAction(ingredients) {
+    return {
+        type: ActionTypes.ADD_INGREDIENTS_TO_CHECKLIST,
+        payload: {
+            ingredients
+        }
+    }
+}

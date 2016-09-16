@@ -1,17 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Image, Text, View, TouchableHighlight } from 'react-native';
 import Checkbox from '../../assets/ingredients/checkbox.png';
 import Tick from '../../assets/ingredients/tick.png';
 import SortableTab from '../../assets/ingredients/sorttab.png';
 
 class CheckItem extends Component {
+    static propTypes = {
+        onToggle: PropTypes.func,
+        index: PropTypes.any,
+        checked: PropTypes.bool,
+        children: PropTypes.any
+    };
+
     toggleCheck = () => {
         this.props.onToggle(this.props.index);
     };
-
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps);
-    }
 
     render() {
         console.log('render');
@@ -21,8 +24,6 @@ class CheckItem extends Component {
                 flexDirection: 'row',
                 alignItems: 'stretch',
                 paddingTop: 5,
-                paddingLeft: 15,
-                paddingRight: 15,
                 paddingBottom: 5
             },
             checkbox: {
@@ -35,7 +36,8 @@ class CheckItem extends Component {
                 flex: 1,
                 position: 'relative',
                 borderBottomWidth: 1,
-                borderColor: '#C8C7CC'
+                borderColor: '#C8C7CC',
+                paddingTop: 5
             },
             tick: {
                 position: 'absolute',

@@ -1,14 +1,7 @@
 import ActionTypes from '../constants/actionTypes';
 
 const initState = {
-    list: [
-        { checked: false, ingredient: 'Ingredient 1' },
-        { checked: false, ingredient: 'Ingredient 2' },
-        { checked: true, ingredient: 'Ingredient 3' },
-        { checked: true, ingredient: 'Ingredient 4' },
-        { checked: false, ingredient: 'Ingredient 5' },
-        { checked: false, ingredient: 'Ingredient 6' }
-    ]
+    list: []
 };
 
 export function checkListState(state = initState, action) {
@@ -18,6 +11,9 @@ export function checkListState(state = initState, action) {
             const ingredient = list[action.payload.index];
             ingredient.checked = !ingredient.checked;
             return { ...state, list };
+        case ActionTypes.ADD_INGREDIENTS_TO_CHECKLIST:
+            console.log(action.payload, action.payload.ingredients);
+            return { ...state, list: [...state.list, ...action.payload.ingredients] };
         default:
             return state;
     }

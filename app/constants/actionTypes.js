@@ -6,5 +6,6 @@ export default keymirror({
     RECIPES_SHOW_RECOMMENDED: null,
     // Search
     SEARCH_RECIPES_VIEW_ITEM_DETAIL: null,
-    TOGGLE_INGREDIENT: null
+    TOGGLE_INGREDIENT: null,
+    ADD_INGREDIENTS_TO_CHECKLIST: null
 });
