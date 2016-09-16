@@ -95,7 +95,7 @@ class RecipeThumbPlus extends Component {
                     <View>
                         <Image source={images[getRandomArbitrary(0, 10)]} style={this.styles.image} />
                         <Text style={this.styles.title}>Indian Beef Curry</Text>
-                        <Text style={this.styles.subTitle}>15 mins prep • 20 mins cock</Text>
+                        <Text style={this.styles.subTitle}>15 mins prep • 20 mins cook</Text>
                     </View>
 
                     <TouchableHighlight style={this.styles.checklist} onPress={this.onPressButton} underlayColor="#FFF">

@@ -17,7 +17,6 @@ import { viewRecipeDetailAction as RecipeViewRecipeDetailAction } from '../../ac
 
 const styles = StyleSheet.create({
    container: {
-       flex: 1,
        height: 44,
        backgroundColor: 'rgba(238, 237, 237, 1)',
        flexDirection: 'row',

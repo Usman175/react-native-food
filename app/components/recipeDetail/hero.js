@@ -7,6 +7,8 @@ import {
 } from 'react-native';
 import Fav from '../../assets/recipeDetail/fav.png';
 import Stars from '../common/starts';
+import images from '../../constants/recipeDetailImages';
+import getRandomArbitrary from '../../utils/getRandomArbitary';
 const { BlurView } = require('react-native-blur');
 
 const styles = StyleSheet.create({
@@ -51,7 +53,7 @@ const styles = StyleSheet.create({
 
 const Hero = () =>
     <View>
-        <Image source={{uri: 'https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/food/2014/11/28/RealLivingBR116425/chinese-hoisin-ribs.jpg?width=1229&height=768&mode=crop&quality=75'}} style={{height: 450}} />
+        <Image source={{uri: images[getRandomArbitrary(0, images.length - 1)]}} style={{height: 450}} />
         <Image style={styles.fav} source={Fav} />
         <BlurView style={styles.textContainer} blurType="dark">
             <Text style={styles.title}>Sri Lankan potato and pea curry</Text>
