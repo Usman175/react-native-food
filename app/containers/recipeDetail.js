@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {
     View,
     Image,
@@ -11,8 +13,9 @@ import Follow from '../components/recipeDetail/follow';
 import Hero from '../components/recipeDetail/hero';
 import Ingredients from '../components/recipeDetail/ingredients';
 import colors from '../styles/colors';
+import { addIngredientAction } from '../actions/checkListAction';
 
-export default class RecipeDetail extends Component {
+class RecipeDetail extends Component {
     static propTypes = {
         source: PropTypes.string
     };
@@ -45,9 +48,17 @@ export default class RecipeDetail extends Component {
                         <SegmentedControlIOS tintColor={colors.red} values={['Ingredients', 'Steps', 'Comments']} selectedIndex={0} />
                     </View>
 
-                    <Ingredients />
+                    <Ingredients addIngredients={ this.props.addIngredients } />
                 </ScrollView>
             </View>
         )
     }
 }
+
+function mapDispatchToProps(dispatch) {
+    return {
+        addIngredients: bindActionCreators(addIngredientAction, dispatch)
+    };
+}
+
+export default connect(null, mapDispatchToProps)(RecipeDetail);

@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
     View,
-    Text
+    Text,
+    TouchableHighlight
 } from 'react-native';
 import Button from '../common/button';
 import colors from '../../styles/colors';
@@ -19,6 +20,15 @@ const data = [
 ];
 
 export default class Ingredients extends Component {
+    static propTypes = {
+        addIngredients: PropTypes.func
+    };
+
+    addIngredients = () => {
+        console.log(this.props);
+        this.props.addIngredients(data);
+    };
+
     constructor(props) {
         super(props);
         this.styles = {
@@ -78,6 +88,7 @@ export default class Ingredients extends Component {
                         fontSize: 14
                     }}
                     text="Checkout List +"
+                    handlePress={ this.addIngredients }
                     />
             </View>
         );

@@ -10,6 +10,7 @@ import colors  from './styles/colors';
 // Containers
 import Recipes from './containers/recipesNavigator';
 import Search from './containers/searchNavigator';
+import CheckList from './containers/checkList';
 
 // Assets
 import recipePNG from './assets/routes/recipes.png';
@@ -56,7 +57,8 @@ export default class Routes extends Component {
             {
                 name: 'Check List',
                 bgColor: '#eee',
-                icon: checkListPNG
+                icon: checkListPNG,
+                container: <CheckList />
             },
             {
                 name: 'Search',
