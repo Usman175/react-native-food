@@ -60,7 +60,7 @@ class CheckItem extends Component {
                     </View>
                 </TouchableHighlight>
                 <View style={ styles.textContainer } >
-                    <Text style={{ marginTop: 5 }}>{ this.props.children }</Text>
+                    <Text style={{ marginTop: 0, fontSize: 17, marginBottom: 10 }}>{ this.props.children }</Text>
                     <Image style={ styles.sortableTab } source={ SortableTab } />
                 </View>
             </View>

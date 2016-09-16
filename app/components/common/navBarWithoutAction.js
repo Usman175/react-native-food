@@ -6,7 +6,8 @@ import {
     View,
     Image,
     StyleSheet,
-    TouchableHighlight
+    TouchableHighlight,
+    SegmentedControlIOS
 } from 'react-native';
 import BackPNG from '../../assets/search/back.png';
 import SharePNG from '../../assets/search/share.png';
@@ -14,19 +15,19 @@ import colors from '../../styles/colors';
 import { viewRecipeDetailAction as SearchViewRecipeDetailAction } from '../../actions/searchAction.js';
 import { viewRecipeDetailAction as RecipeViewRecipeDetailAction } from '../../actions/recipesAction.js';
 
-
 const styles = StyleSheet.create({
-   container: {
-       height: 44,
-       backgroundColor: 'rgba(238, 237, 237, 1)',
-       flexDirection: 'row',
-       justifyContent: 'space-between'
+    container: {
+        height: 44,
+        backgroundColor: 'rgba(238, 237, 237, 1)',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     backContainer: {
         width: 40,
         marginTop: 12,
         marginLeft: 10,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        opacity: 0
     },
     backText: {
         color: colors.red,
@@ -40,7 +41,8 @@ const styles = StyleSheet.create({
     },
     shareIcon: {
         marginTop: 13,
-        marginRight: 10
+        marginRight: 10,
+        opacity: 0
     }
 });
 
@@ -62,7 +64,15 @@ class NavBar extends Component {
                         <Text style={styles.backText}>Back</Text>
                     </View>
                 </TouchableHighlight>
-                <Text style={styles.title}>{this.props.text  ? this.props.text : 'Recipe'}</Text>
+                <SegmentedControlIOS
+                    tintColor={colors.red}
+                    style={{flex: 1, marginTop: 8}}
+                    values={['To do', 'Done']}
+                    selectedIndex={0}
+                    onChange={(event) => {
+                        this.setState({selectedIndex: event.nativeEvent.selectedSegmentIndex});
+                    }}
+                />
                 <TouchableHighlight underlayColor={null} onPress={this.handlePress}>
                     <Image style={styles.shareIcon} source={SharePNG} />
                 </TouchableHighlight>

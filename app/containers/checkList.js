@@ -7,7 +7,7 @@ import {
     Text,
     ListView
 } from 'react-native';
-import NavBar from '../components/common/navBar.js';
+import NavBar from '../components/common/navBarWithoutAction';
 import CheckItem from '../components/ingredients/checkItem';
 import { toggleIngredientAction } from '../actions/checkListAction';
 
@@ -21,7 +21,6 @@ class CheckList extends Component {
     constructor(props) {
         super(props);
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        console.log(this.props.checkList);
         this.state = {
             dataSource: ds.cloneWithRows(this.props.checkList),
             list: this.props.checkList
@@ -43,21 +42,27 @@ class CheckList extends Component {
                 flex: 1,
                 flexDirection: 'column',
                 backgroundColor: 'rgba(245, 252, 255, 1)',
-                paddingTop: 22,
+                paddingTop: 5,
                 paddingLeft: 15,
                 paddingRight:15
             },
             noIngredientText: {
-                textAlign: 'center'
+                marginTop: 120,
+                padding: 50,
+                fontSize: 17,
+                lineHeight: 24,
+                fontWeight: '100',
+                textAlign: 'center',
+                color: '#929292'
             }
         };
 
-        const noIngredientText = 'Your checklist is empty.\n\n' +
+        const noIngredientText = 'Your checklist is empty.\n' +
             'Ingredients that you have added from your favourite recipe/s will appear here';
 
         return (
             <View style={{ flex: 1 }}>
-                <NavBar source={this.props.source} />
+                <NavBar source={this.props.source} text="Checklist" disableAction={true} />
                 <ScrollView style={ styles.container }>
                     { this.state.list.length ? (
                     <ListView

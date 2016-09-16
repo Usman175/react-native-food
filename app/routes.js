@@ -10,6 +10,7 @@ import colors  from './styles/colors';
 // Containers
 import Recipes from './containers/recipesNavigator';
 import Search from './containers/searchNavigator';
+import Questions from './containers/questions';
 import CheckList from './containers/checkList';
 
 // Assets
@@ -21,7 +22,6 @@ import morePNG from './assets/routes/more.png';
 
 export default class Routes extends Component {
     static description = 'Tab-based navigation.';
-    static displayName = 'TabBarExample';
 
     constructor(props) {
         super(props);
@@ -85,29 +85,31 @@ export default class Routes extends Component {
 
     render() {
         return (
-            <TabBarIOS
-                translucent={true}
-                tintColor={colors.red}
-                style={this.styles.tabBar}>
+            <View style={{flex: 1}}>
+                <TabBarIOS
+                    translucent={true}
+                    tintColor={colors.red}
+                    style={this.styles.tabBar}>
 
-                {this.menusItems.map((menu, i) => {
-                    return (
-                        <TabBarIOS.Item
-                            key={i}
-                            icon={menu.icon}
-                            title={menu.name}
-                            selected={this.state.selectedTab ===  menu.name}
-                            onPress={() => {
-                                this.setState({
-                                  selectedTab: menu.name
-                                });
-                            }}>
-                            {menu.container ? menu.container : this.renderContent(menu.color, menu.name)}
-                        </TabBarIOS.Item>
-                    );
-                })}
+                    {this.menusItems.map((menu, i) => {
+                        return (
+                            <TabBarIOS.Item
+                                key={i}
+                                icon={menu.icon}
+                                title={menu.name}
+                                selected={this.state.selectedTab ===  menu.name}
+                                onPress={() => {
+                                    this.setState({
+                                      selectedTab: menu.name
+                                    });
+                                }}>
+                                {menu.container ? menu.container : this.renderContent(menu.color, menu.name)}
+                            </TabBarIOS.Item>
+                        );
+                    })}
 
-            </TabBarIOS>
+                </TabBarIOS>
+            </View>
         );
     }
 }
