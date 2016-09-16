@@ -10,6 +10,7 @@ import colors  from './styles/colors';
 // Containers
 import Recipes from './containers/recipesNavigator';
 import Search from './containers/searchNavigator';
+import MyKitchen from './containers/myKitchenNavigator';
 import Questions from './containers/questions';
 import CheckList from './containers/checkList';
 
@@ -52,7 +53,8 @@ export default class Routes extends Component {
             {
                 name: 'My Kitchen',
                 bgColor: '#ccc',
-                icon: myKitchenPNG
+                icon: myKitchenPNG,
+                container: <MyKitchen />
             },
             {
                 name: 'Check List',
@@ -109,6 +111,7 @@ export default class Routes extends Component {
                     })}
 
                 </TabBarIOS>
+                <Questions />
             </View>
         );
     }

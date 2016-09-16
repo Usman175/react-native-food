@@ -6,7 +6,8 @@ const images = [
     'https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/food/2015/08/12/18745/ZD1534_C1492852-DA3415fd--wfd-Budget-rsafsm10S2Z99R2Z99.jpg?width=1229&height=768&mode=crop&quality=75',
     'https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/food/2014/11/28/AustralianWomensWeeklyBR117975/whole-fried-fish-with-chilli-bean-sauce.jpg?width=1229&height=768&mode=crop&quality=75',
     'https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/food/2014/11/28/AustralianTableBR110127/barbecued-fish.jpg?width=1229&height=768&mode=crop&quality=75',
-    'https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/food/2014/11/28/AustralianWomensWeeklyBR117228/pan-fried-fish-with-lemon-and-spinach-salad.jpg?width=1229&height=768&mode=crop&quality=75'
+    'https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/food/2014/11/28/AustralianWomensWeeklyBR117228/pan-fried-fish-with-lemon-and-spinach-salad.jpg?width=1229&height=768&mode=crop&quality=75',
+    'http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/food/2015/08/27/27045/C1493F02-DA3715fdx-FathersDayCake-rsafdr03-psdd.jpg'
 ];
 
 export default images;

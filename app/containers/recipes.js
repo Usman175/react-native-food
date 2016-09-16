@@ -16,6 +16,9 @@ import hero1PNG from '../assets/recipes/hero1.png';
 import hero2PNG from '../assets/recipes/hero2.png';
 import hero3PNG from '../assets/recipes/hero3.png';
 import hero4PNG from '../assets/recipes/hero4.png';
+import heroPNG from '../assets/recipes/Hero.png';
+width = Dimensions.get('window').width;
+height = Dimensions.get('window').height;
 
 export default class Recipes extends Component {
     static propTypes = {
@@ -30,7 +33,7 @@ export default class Recipes extends Component {
         };
         this.heroRecipes = [
             {
-                img: hero1PNG,
+                img: heroPNG,
                 description: 'Chicken and tomato pesto lasagne recipe.'
             },
             {
@@ -50,7 +53,7 @@ export default class Recipes extends Component {
 
     onLayoutDidChange(e) {
         var layout = e.nativeEvent.layout;
-        this.setState({size: {width: layout.width, height: 160}});
+        this.setState({size: {width: layout.width, height: 250}});
     }
 
     render() {
@@ -73,7 +76,7 @@ export default class Recipes extends Component {
 
                     <ScrollableRecipes title="Recipes you followed" />
 
-                    <ScrollableRecipes title="You may love these" />
+                    <ScrollableRecipes title="Discover" />
 
                     <ScrollableRecipes title="New recipes" />
                 </View>

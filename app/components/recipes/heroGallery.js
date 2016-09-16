@@ -5,11 +5,12 @@ import {
     View,
     Image
 } from 'react-native';
+import Dimensions from 'Dimensions';
 
 const styles = StyleSheet.create({
     textView: {
         height: 55,
-        marginTop: 107,
+        marginTop: 197,
         flexDirection: 'column',
         backgroundColor: 'rgba(86,86,86, 0.45)'
     },
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
 
 const HeroGallery = (props) =>
     <View>
-        <Image source={props.img}>
+        <Image source={props.img} resizeMode="cover">
             <View style={styles.textView}>
                 <Text style={styles.text} ellipsizeMode="tail" numberOfLines={2}>
                     {props.description}
